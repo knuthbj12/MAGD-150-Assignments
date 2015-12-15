@@ -266,23 +266,141 @@ void mousePressed() {
   <p>Description: This was my fourth sketch.  It's a very simple sketch.  You can click to change the state.  I made this sketch while learning about adding text and changing states.</p>
         <br />
         <br />
-  <h1>Your Sketch4 Title</h1>
+  <h1>Curling</h1>
   <script type="text/processing" data-processing-target="mycanvas4">
   
-  <!-- Your sketch4 goes here -->
+float posX = 200;
+float posY = 900;
+
+void setup() {
+  size(400, 1000);
+}
+
+void draw() {
+  //the initial background
+  background(245, 230, 230);
+  strokeWeight(5);
+  line(25, 0, 25, 1000);
+  line(375, 0, 375, 1000);
+  
+  //the target
+  strokeWeight(1);
+  ellipseMode(CENTER);
+  fill(57, 64, 245);
+  ellipse(width/2, 200, 300, 300);
+  fill(255, 255, 255);
+  ellipse(width/2, 200, 200, 200);
+  fill(240, 22, 36);
+  ellipse(width/2, 200, 100, 100);
+  fill(255, 255, 255);
+  ellipse(width/2, 200, 50, 50);
+  stroke(0);
+  line(50, 200, 175, 200);
+  line(225, 200, 350, 200);
+  line(200, 50, 200, 175);
+  line(200, 225, 200, 350);
+  point(200, 200);
+  
+  update();
+}
+
+void update() {
+  //the stone
+  fill(252, 43, 43);
+  ellipse(posX, posY, 45, 45);
+  fill(0);
+  ellipse(posX, posY, 35, 35);
+  
+  //if the stone's position reaches the center of the target, enters a new state
+  if(posY == 200) {
+    background(61, 255, 59);
+    for(int x = 0; x < 4; x++){
+      fill(191, 6, 6);
+      rectMode(CORNER);
+      noStroke();
+      rect((x * 100), 0, 50, 1000);
+    }
+    textSize(50);
+    fill(0);
+    text("PERFECT", mouseX, mouseY);
+    text("TOSS!", mouseX + 25, mouseY + 50);
+    //otherwise, it moves further down the screen
+  } else {
+    posY -= 5;
+  }
+}
 
   </script>
   <canvas id="mycanvas4"></canvas>
-  <p>Description:</p>
+  <p>Description:This was my fifth sketch.  I made it while learning about making objects move on their own.  After the stone hits the center of the target, you can move the text that appears with the mouse.</p>
         <br />
         <br />
-  <h1>Your Sketch5 Title</h1>
+  <h1>Greedo shot first</h1>
   <script type="text/processing" data-processing-target="mycanvas5">
   
-  <!-- Your sketch5 goes here -->
+  float posX = 675;
+float velocity = 0;
+float color1 = random(0, 255);
+float color2 = random(0, 255);
+float color3 = random(0, 255);
+float color4 = random(0, 255);
+float color5 = random(0, 255);
+float color6 = random(0, 255);
+
+void setup() {
+  size(1500, 1000);
+}
+
+void draw() {
+  background(204, 201, 219);
+  
+  fill(0);
+  rectMode(CORNERS);
+  
+  //the  top part of the blaster
+  rect(200, 475, 250, 500);
+  rect(450, 475, 500, 500);
+  rect(150, 375, 550, 475);
+  arc(150, 425, 100, 100, HALF_PI, 1.5*PI);
+  
+  //Greedo's arm
+  fill(219, 217, 177);
+  rect(0, 645, 200, 795);
+  fill(123, 214, 149);
+  ellipse(250, 720, 200, 195);
+  
+  update();
+}
+
+void update() {
+  //the laser
+  fill(250, 3, 65);
+  rectMode(CORNERS);
+  rect(posX, 550, posX+100, 570);
+  //the bottom part of the blaster.  It's in the update method so that it appears on top of the laser.
+  fill(0);
+  rect(50, 500, 750, 620);
+  rect(650, 520, 775, 600);
+  //if the laser is at least 500 past the edge of the screen, changes the state
+  if (posX >= 2000) {
+    background(color1, color2, color3);
+    fill(color4, color5, color6);
+    textSize(50);
+    text("Greedo Shot First", mouseX - 200, mouseY + 25);
+  }
+  //otherwise the laser should travel farther across the screen
+  else {
+    posX += velocity;
+  }
+}
+
+void mousePressed() {
+  //shoots the blaster when the mouse is pressed
+  velocity = 50;
+}
 
   </script>
   <canvas id="mycanvas5"></canvas>
-  <p>Description:</p>
+  <p>Description:This was my sixth sketch.  It's kind of bare bones, but I liked how it turned out.  I made this while learning about random elements.  You can click to shoot Greedo's blaster and can move the text on the second screen with the mouse.</p>
   </body>
 </html>  
