@@ -28,8 +28,8 @@ void setup() {
 void draw() {
   if(state == 1) {
     //the background for the title screen
-    image(generic1, 0, 0, 800, 600);
     background(0);
+    image(generic1, 0, 0, 800, 600);
     
     //explains the rules of the game
     textSize(19);
@@ -45,8 +45,8 @@ void draw() {
   }
   else if (state == 2) {
     //the background for the main game
+    background(0);
     image(generic2, 0, 0, 800, 600);
-    background(0)
     
     //changes to the game over screen when the time runs out
     if(myTimer.isFinished() == true) {
@@ -60,8 +60,8 @@ void draw() {
   }
   else if (state == 3) {
     //the background image for the game over screen
+    background(0);
     image(generic3, 0, 0, 800, 600);
-    background(0)
     text("Your score is: ", 350, 100);
     text(clickCount, 425, 125);
     
