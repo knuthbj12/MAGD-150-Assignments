@@ -403,6 +403,7 @@ void mousePressed() {
   
 float posX = 200;
 float posY = 900;
+boolean pressed = false;
 
 void setup() {
   size(400, 1000);
@@ -433,7 +434,9 @@ void draw() {
   line(200, 225, 200, 350);
   point(200, 200);
   
-  update();
+  if (pressed) {
+    update();
+  }
 }
 
 void update() {
@@ -461,6 +464,12 @@ void update() {
     posY -= 5;
   }
 }
+
+void mousePressed() {
+  pressed = true;
+}
+
+
 
   </script>
   <canvas id="mycanvas4"></canvas>
